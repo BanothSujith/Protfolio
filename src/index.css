@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+
+
+
+  .dark{
+      --hue:#030303;
+/* --hue:#f9f9f9; */
+  --switch1 : oklch(from var(--hue) calc(l*1.2) c h);
+ --color-bg: var(--hue);
+  --color-surface: oklch(from var(--hue) calc(l*0.8) c h);
+    --color-cardbg : oklch(from var( --color-surface) calc(l*4) calc(c) h);
+
+  --color-nav:oklch(from var(--hue) l c h  );
+  --color-button:oklch(from var(--hue) calc(l*2) calc(c*4) h);
+  --color-text: oklch(from var(--hue) calc(l*10) calc(c*10) calc(h*2)) ;
+  --color-border: oklch(from var(--hue) calc(l*10) calc(c*1) calc(h*1));
+  --color-border2 : oklch(from var(--hue) calc(l*10) calc(c*8) h );
+  --color-gradientfrom: oklch(from var(--hue) calc(l*8) calc(c*4) h);
+  --color-gradientto: oklch(from var(--hue) calc(l*3) calc(c*10) h);
+--color-gradientvia:oklch(from var(--hue) calc(l*5) calc(c*7) h );
+  --color-shadow:oklch(from var(--hue) calc(l*10) c calc(h*8) );
+  --shadow-shad: 0 0px 20px var(--color-shadow), inset 0 0 20px var(--color-shadow);
+  --color-btnhoverbg: #970303;
+  --color-btnbg:#492222;
+  }
+.bright{
+      --hue:#111111;
+/* --hue:#0f5f8d; */
+  --switch1 : oklch(from var(--hue) calc(l*1.2) c h);
+ --color-bg: var(--hue);
+  --color-surface: #c2c2c4;
+  --color-cardbg : oklch(from var( --color-surface) calc(l*90) c h);
+  --color-nav:oklch(from var(--hue) l c h  );
+  --color-button:oklch(from var(--hue) calc(l*2) calc(c*4) h);
+  --color-text: #000 ;
+  --color-border: oklch(from var(--hue) calc(l*100) calc(c*1) calc(h*1));
+  --color-border2 : oklch(from var(--hue) calc(l*10) calc(c*8) h );
+  --color-gradientfrom: oklch(from var(--hue) calc(l*50) calc(c*4) h);
+  --color-gradientto: oklch(from var(--hue) calc(l*30) calc(c*2) h);
+--color-gradientvia:oklch(from var(--hue) calc(l*5) calc(c*7) h );
+  --color-shadow:oklch(from var(--hue) calc(l*10) c calc(h*8) );
+  --shadow-shad: 0 0px 20px var(--color-shadow), inset 0 0 20px var(--color-shadow);
+  --color-btnhoverbg: #970303;
+  --color-btnbg:#000;
+  }
+
+@theme {
+ --hue: var(--hue);
+  --switch1: var(--switch1);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+   --color-cardbg : var( --color-cardbg);
+  --color-nav: var(--color-nav);
+  --color-button: var(--color-button);
+  --color-text: var(--color-text);
+  --color-border: var(--color-border);
+  --color-border2: var(--color-border2);
+  --color-gradientfrom: var(--color-gradientfrom);
+  --color-gradientto: var(--color-gradientto);
+  --color-gradientvia: var(--color-gradientvia);
+  --color-shadow: var(--color-shadow);
+--color-btnhoverbg:var(--color-btnhoverbg);
+  --color-btnbg:var(--color-btnbg);
+  --shadow-shad: var(--shadow-shad);
+  --animate-move: move 1s  ease-in-out infinite;
+   --animate-bgmove: bgmove 3s linear infinite;
+   --animate-flash: flash .8s linear infinite;
+   --animate-rotate: rotate 1s linear infinite;
+   --animate-shake: shake 1s linear infinite;
+   
+  @keyframes move {
+  0% { transform: translateY(0px)  ; }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes run {
+  0% { transform: skew(0deg)  ; }
+  50% { transform: skew(10deg); }
+  100% { transform: skew(0deg); }
+}
+@keyframes rotateBorsdder {
+  0% {
+    --angle:0deg;
+  }
+  100% {
+    --angle:360deg;
+  }
+}
+
+@keyframes bgmove {
+  0%   { background-position: 0vw; }
+  100% { background-position: 100vw; }
+}
+@keyframes flash {
+     0%   { transform: translateX(0px) ; }
+  100% { transform: translateX(120px); }
+}
+@keyframes rotate {
+  0% { transform:rotate(0deg);  }
+  100% { transform:rotate(360deg); }
+}
+@keyframes shake {
+  0% { transform: translateX(0px) ; }
+  25% { transform: translateX(1px); }
+  50% { transform: translateX(0px); }
+  75% { transform: translateX(1px); }
+  100% { transform: translateX(0px); }
+  
+}
+}
+/* Width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5cced6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+
+}
+.test svg text{
+color: red;
+animation: run 1s infinite;
+transition: all 1s ease-in-out;
+transform: skew(0deg);
+}
+.test svg g{
+color: red;
+animation: move 1s infinite;
+transition: all 1s ease-in-out;
+transform: skew(0deg);
+}
+
+
+
+ @property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+ }
+.animate::before {
+ 
+ background: linear-gradient( var(--angle), #0b8ca3 50% , #5e0be4);
+ animation: 2s rotateBorsdder linear infinite;
+ 
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 3.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 3.5s ease-in-out infinite;
+}
+input{
+  caret-color: #faeaea;
+}
