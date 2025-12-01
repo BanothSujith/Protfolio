@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import IsInView from '../Hooks/IsInView.jsx';
 import { AnimatePresence, motion } from "framer-motion";
+import profile from "../assets/sujith.png";
 const developerRoles = [
   {
     description:
@@ -179,7 +180,7 @@ const variants = {
             }`}
           >
             <img
-              src="../../src/assets/sujith.png"
+              src={profile}
               alt="sujith"
               draggable="false"
               className="relative bg-surface w-full  z-20 object-[10px_-20px]  aspect-square object-cover rounded-full shadow-2xl  "
