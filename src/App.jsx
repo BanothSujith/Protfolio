@@ -3,9 +3,9 @@ import Navbar from './Navbar/index.jsx'
 import './index.css'
 // import { Helmet } from "react-helmet";
 import About from './pages/About.jsx';
-import Projects from './pages/Projects.jsx';
+// import Projects from './pages/Projects.jsx';
 import Contact from './pages/Contact.jsx';
-import FooterCopyright from './components/FooterCopyRight.jsx';
+import FooterCopyright from './components/FooterCopyright.jsx';
 import Home from './pages/Home.jsx';
 import Projects2 from './pages/Projects2.jsx';
 import { useSelector } from 'react-redux';
