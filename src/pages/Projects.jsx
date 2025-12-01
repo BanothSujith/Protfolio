@@ -1,4 +1,3 @@
-import { useEffect, lazy } from "react";
 import IsInView from "../Hooks/IsInView.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";

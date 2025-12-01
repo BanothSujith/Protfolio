@@ -1,16 +1,29 @@
-import { NavLink, useLocation } from "react-router";
+// import { NavLink, useLocation } from "react-router";
 import { motion } from "framer-motion";
 import "../index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsNavclickcked } from "../Redux/slice";
+import { useState } from "react";
 function index() {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
     { path: "/contact", label: "Contact" },
-    { path: "/users", label: "Users" },
   ];
-  const location = useLocation();
-
+  // const location = useLocation();
+  const [location, setLocation] = useState("home");
+  const navcliked = useSelector((state) => state.storeSlice.isNavclickcked);
+  const dispatch = useDispatch();
+  const handleclick = (e, path) => {
+    setLocation(path.label.toLowerCase());
+   dispatch(setIsNavclickcked(true));   
+     console.log(navcliked);
+     e.preventDefault();
+     document
+       .getElementById(path.label.toLowerCase())
+       .scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <div className="fixed top-0 w-full p-0.5   md:pb-2 md:px-2 flex h-10 md:h-20 justify-between items-center z-50 ">
       <div className=" test  md:pt-2  h-full  flex flex-col hover:scale-105 transition-all duration-75 ease-linear hover:skew-2 ">
@@ -31,14 +44,13 @@ function index() {
        "
       >
         {navLinks.map((link) => {
-          const isActive = location.pathname === link.path;
+          const isActive = location == link.label.toLowerCase();
 
           return (
-            <a
+            <button
               key={link.path}
-              to={link.path}
+              onClick={(e) => handleclick(e, link)}
               className="relative z-11 px-3 py-1  font-normal text-text "
-              href={"#"+link.label.toLowerCase()}
             >
               {isActive && (
                 <motion.div
@@ -48,7 +60,7 @@ function index() {
                 />
               )}
               <span className={`relative`}>{link.label}</span>
-            </a>
+            </button>
           );
         })}
       </nav>
@@ -60,19 +72,13 @@ function index() {
        "
       >
         {navLinks.map((link) => {
-          const isActive = location.pathname === link.path;
+          const isActive = location == link.label.toLowerCase();
 
           return (
-            <a
+            <button
               key={link.path}
-              to={link.path}
-              href={"#" + link.label.toLowerCase()}
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById(link.label.toLowerCase())
-                  .scrollIntoView({ behavior: "smooth" });
-              }}
+             
+              onClick={(e) => handleclick(e, link)}
               className="relative z-11 px-4 py-2  font-bold tracking-widest uppercase  hover:scale-105 transition-all duration-1000  ease-linear  "
             >
               {isActive && (
@@ -89,7 +95,7 @@ function index() {
               >
                 {link.label}
               </span>
-            </a>
+            </button>
           );
         })}
       </nav>

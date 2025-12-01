@@ -33,7 +33,7 @@ const FooterCopyright = () => {
 //      },
 //    ];
   return (
-    <footer className=" w-full border-[.5px] py-1 border-t-border bg-cardbg/40">
+    <footer className="absolute bottom-0 left-0 w-[105%] border-t-[.5px] py-1 border-border bg-cardbg/40">
       <div className="flex flex-col items-center gap-1">
         <p className="text-xs text-text/90 tracking-widest font-medium">
           © {year} All Rights Are Reserved.

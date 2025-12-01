@@ -7,7 +7,7 @@
       --hue:#030303;
 /* --hue:#f9f9f9; */
   --switch1 : oklch(from var(--hue) calc(l*1.2) c h);
- --color-bg: var(--hue);
+ --color-bg: okhcl(from var(--hue)   calc(l*0) c h);
   --color-surface: oklch(from var(--hue) calc(l*0.8) c h);
     --color-cardbg : oklch(from var( --color-surface) calc(l*4) calc(c) h);
 

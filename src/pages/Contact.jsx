@@ -4,7 +4,7 @@ import SocialMediaLinks from '../components/SocialMediaLinks';
 import useInView from '../Hooks/IsInView';
 
 function Contact() {
-    const [ref, isVisible, pageView] = useInView();
+    const [ref, isVisible, pageView] = useInView(.2,'0px');
     const [contactData,setContactData] = useState({first_name:"",last_name:"",email:"",message:"",isEmail:false});
    const handlecontactForm = (field, e) => {
      const value = e.target.value;
@@ -44,8 +44,8 @@ function Contact() {
         ref.current = ele;
         pageView.current = ele;
       }}
-      id='contact'
-      className="h-fit w-full overflow-y-auto scrollbar "
+      id="contact"
+      className="h-fit md:h-screen lg:h-fit w-full overflow-y-auto scrollbar "
     >
       <div className="w-full h-[40vh] lg:h-[60vh] relative ">
         {/* image part */}
@@ -78,7 +78,7 @@ function Contact() {
         </div>
         <div className=" w-full  flex flex-col gap-8">
           {/* part2 */}
-          <div className="text-2xl font-bold tracking-wider">
+          <div className="text-2xl font-bold tracking-wider text-text">
             <span>Contact</span>
           </div>
           <form className="flex flex-col gap-6 p-4  ">
@@ -87,6 +87,7 @@ function Contact() {
                 First Name:
                 <input
                   onChange={(e) => handlecontactForm("first_name", e)}
+                  value={contactData?.first_name}
                   type="text"
                   className="appearance-none outline-0 w-full  text-xl font-medium  border-b-2 border-[#8f8f8c] text-text "
                 />
@@ -95,6 +96,7 @@ function Contact() {
                 Last Name:
                 <input
                   onChange={(e) => handlecontactForm("last_name", e)}
+                  value={contactData?.last_name}
                   type="text"
                   className="appearance-none outline-0 w-full  text-xl font-medium  border-b-2 border-[#8f8f8c] text-text "
                 />
@@ -108,6 +110,7 @@ function Contact() {
                 </span>
               ) : null}
               <input
+              value={contactData?.email}
                 onChange={(e) => handlecontactForm("email", e)}
                 required
                 type="Email"
@@ -117,6 +120,7 @@ function Contact() {
             <label className="tracking-widest text-text/70 font-bold ">
               Write a message:
               <input
+              value={contactData?.message}
                 onChange={(e) => handlecontactForm("message", e)}
                 required
                 type="textarea"
@@ -125,7 +129,7 @@ function Contact() {
             </label>
             <button
               onClick={(e) => handlecontactFormSubmit(e)}
-              className="group w-1/2 lg:w-1/6 text-white bg-black border border-border/15 hover:animate-buttonanimi rounded-xl px-4 py-1 md:px-[4%] md:py-[1%]   overflow-hidden  font-medium  relative z-10  md:text-xl    cursor-pointer "
+              className="group mt-2 md:mt-10 w-1/2 lg:w-1/6 text-white bg-black border border-border/15 hover:animate-buttonanimi rounded-xl px-4 py-1 md:px-[4%] md:py-[1%]   overflow-hidden  font-medium  relative z-10  md:text-xl    cursor-pointer "
             >
               <span className="absolute top-0 left-0 bg-[#a1461c] opacity-70 w-full h-full rotate-45 -translate-x-[calc(70%)] group-hover:-translate-x-0 group-hover:rotate-0 transition-all duration-500 ease-linear group-active:bg-gray-800"></span>
               <span className="relative z-10">Submit</span>
@@ -133,7 +137,6 @@ function Contact() {
           </form>
         </div>
       </div>
-      
     </div>
   );
 }

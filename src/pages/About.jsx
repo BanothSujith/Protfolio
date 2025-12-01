@@ -108,9 +108,10 @@ const variants = {
 
      
      if (scrollLock.current) {
-       setTimeout(() => {
+      setTimeout(() => {
          scrollLock.current = false;
-       }, 500); 
+       }, 300); 
+       
      }
    };
 
