@@ -136,7 +136,7 @@ function Home() {
        >
          <div className="relative rounded-full bg-surface group">
            <img
-             src="../../src/assets/sujith.webp"
+             src="../../src/assets/sujith.png"
              alt="sujith"
              draggable="false"
              className="relative z-20 object-[10px_-20px] h-full aspect-square object-cover rounded-full shadow-2xl  "
