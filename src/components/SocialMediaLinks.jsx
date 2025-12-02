@@ -33,11 +33,6 @@ const social = [
        icon: IoLogoWhatsapp,
        to: "https://wa.me/+917995037426?text=Hi, Just went through your portfolio and would like to connect with you.",
      },
-     {
-       lable: "GitHub",
-       icon: FaGithub,
-       to: "https://www.linkedin.com/in/banothsujith/",
-     },
    ];
 function SocialMediaLinks({isVisible = false, page="home"}) {
   return (

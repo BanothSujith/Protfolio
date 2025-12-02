@@ -1,9 +1,8 @@
 // import { NavLink, useLocation } from "react-router";
 import { motion } from "framer-motion";
 import "../index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { setIsNavclickcked } from "../Redux/slice";
-import { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { setCurrentPath, setIsNavclickcked } from "../Redux/slice";
 function index() {
   const navLinks = [
     { path: "/", label: "Home" },
@@ -12,13 +11,12 @@ function index() {
     { path: "/contact", label: "Contact" },
   ];
   // const location = useLocation();
-  const [location, setLocation] = useState("home");
-  const navcliked = useSelector((state) => state.storeSlice.isNavclickcked);
+  const locationRedux = useSelector((state) => state.storeSlice.currentPath);
+  
   const dispatch = useDispatch();
   const handleclick = (e, path) => {
-    setLocation(path.label.toLowerCase());
+    dispatch(setCurrentPath(path.label.toLowerCase()));
    dispatch(setIsNavclickcked(true));   
-     console.log(navcliked);
      e.preventDefault();
      document
        .getElementById(path.label.toLowerCase())
@@ -40,11 +38,11 @@ function index() {
       </div>
       {/* mobile navbar */}
       <nav
-        className=" md:hidden  fixed bottom-0 p-2 overflow-auto w-full scrollbar bg-[#0a1429] 
+        className=" md:hidden  fixed bottom-0 p-2 overflow-auto w-full scrollbar bg-[#0a1429] flex justify-evenly items-center
        "
       >
         {navLinks.map((link) => {
-          const isActive = location == link.label.toLowerCase();
+          const isActive = locationRedux == link.label.toLowerCase();
 
           return (
             <button
@@ -72,7 +70,7 @@ function index() {
        "
       >
         {navLinks.map((link) => {
-          const isActive = location == link.label.toLowerCase();
+          const isActive = locationRedux == link.label.toLowerCase();
 
           return (
             <button

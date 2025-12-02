@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsNavclickcked } from "../Redux/slice";
+import { setIsNavclickcked, setCurrentPath } from "../Redux/slice";
 
 export default function useInView(threshold = 0.4, margin = "0px") {
   const ref = useRef(null); 
@@ -31,7 +31,7 @@ export default function useInView(threshold = 0.4, margin = "0px") {
       //   behavior: "smooth",
       // });
       pageView.current.scrollIntoView({ behavior: "smooth" });
-
+     pageView.current.id && dispatch(setCurrentPath(pageView.current.id));  
     }
   } else {
    const timer = setTimeout(() => {

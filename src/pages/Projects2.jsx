@@ -274,10 +274,10 @@ function Projects2() {
         pageView.current = ele;
       }}
       id="projects"
-      className="h-fit md:h-screen w-full text-text flex flex-col justify-center items-center gap-6 lg:gap-12 lg:pt-18 overflow-hidden "
+      className="h-fit md:h-screen w-full text-text flex flex-col justify-center items-center gap-6  lg:pt-18 overflow-hidden "
     >
       <h1
-        className={`text-3xl md:text-5xl font-bold transition-all duration-700 lg:duration- ease-linear md:hidden lg:block ${
+        className={`text-3xl md:text-5xl font-bold transition-all duration-700 lg:duration- ease-linear hidden lg:block ${
           isVisible
             ? "opacity-100 translate-y-0 "
             : "opacity-0  translate-y-100"

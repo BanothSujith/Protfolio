@@ -145,14 +145,14 @@ const variants = {
   return (
     <div
       ref={pageView}
-      id='about'
-      className=" w-full  bg-surface  text-text text-center  pt-15 md:px-12   flex justify-between items-center flex-col gap-8 h-fit md:h-screen pb-6 md:pb-0 "
+      id="about"
+      className=" w-full  bg-surface  text-text text-center  md:pt-15 md:px-12   flex justify-between items-center flex-col gap-8 h-fit md:h-screen pb-6 md:pb-0 "
     >
       <h1
-        className={`text-5xl font-bold transition-all duration-700 lg:duration-1000 ease-linear ${
+        className={`text-3xl md:text-5xl font-bold transition-all duration-700 lg:duration-1000 ease-linear ${
           isVisible
             ? "opacity-100 translate-y-0 "
-            : "opacity-20  translate-y-100"
+            : "opacity-0  translate-y-100"
         } `}
       >
         About Me

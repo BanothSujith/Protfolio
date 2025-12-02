@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import useInView from "../Hooks/IsInView.jsx";
 import SocialMediaLinks from "../components/SocialMediaLinks.jsx";
 import profile from "../assets/sujith.png";
+import { useDispatch } from "react-redux";
+import {setIsNavclickcked} from "../Redux/slice.js"
 function Home() {
   const Data = [
      {
@@ -28,9 +30,21 @@ function Home() {
    ];
    const role = ["Front End", "Full Stack"];
    const buttons = ["Projects", "Resume"];
-
+   const dispatch = useDispatch();
    const [data, setdata] = useState(Data);
    const [ref, isVisible, pageView] = useInView();
+   const hanldleClick = (btn) =>{
+      if (btn === "Projects") {
+        dispatch(setIsNavclickcked(true));
+        document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+      }
+      else if (btn === "Resume") {
+        window.open(
+          "/Resume/Sujith_Resume.pdf",
+          "_blank"
+        );
+      }
+   }
    return (
      <div
        ref={(ele) => {
@@ -115,7 +129,7 @@ function Home() {
          >
            {buttons.map((btn, i) => (
              <button
-               onClick={() => hanldleClick("Resume")}
+               onClick={() => hanldleClick(btn)}
                key={i}
                className="group grow-1 md:grow-0  shrink-0 text-border  hover:animate-buttonanimi rounded-xl px-4 py-1 md:px-[4%] md:py-[1%]   overflow-hidden  font-medium  relative z-10  md:text-xl cursor-pointer bg-btnbg"
              >
