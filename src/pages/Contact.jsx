@@ -26,28 +26,27 @@ function Contact() {
    };
     const handlecontactFormSubmit = async (e) =>{
       e.preventDefault();
-      console.log(contactData);
+       const dataToSend = {
+         full_name: contactData.first_name + " " + contactData.last_name,
+         email: contactData.email,
+         message: contactData.message,
+       };
+        if (contactData.email.length != 0 && contactData.isEmail == true) {
+          alert("Form submitted successfully!" + contactData.email);
+          setContactData({
+            first_name: "",
+            last_name: "",
+            email: "",
+            message: "",
+            isEmail: false,
+          });
+       
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER}api/v1/notify`,
-        {
-          full_name: contactData.first_name + " " + contactData.last_name,
-          // last_name: contactData.last_name,
-          email: contactData.email,
-          message: contactData.message,
-        }
+        dataToSend
       );
       console.log(res);
-      if(contactData.email.length !=0 || contactData.isEmail == true){
-        alert("Form submitted successfully!"+contactData.email);
-                setContactData({
-                  first_name: "",
-                  last_name: "",
-                  email: "",
-                  message: "",
-                  isEmail: false,
-                });
-
-      }
+    }
     }
   return (
     <div
