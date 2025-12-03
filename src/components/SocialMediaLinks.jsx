@@ -49,21 +49,17 @@ function SocialMediaLinks({isVisible = false, page="home"}) {
             key={i}
             className={`group  shadow-[2px_-2px_5px] shadow-border bg-surface 
            hover:animate-buttonanimi  px-2 py-2 overflow-hidden  font-medium relative z-10 w-[clamp(2.5rem,2vw,6rem)] h-[clamp(2.5rem,2vw,6vw)]  rounded-full cursor-pointer transition-all duration-100 ease-linear  ${
-             isVisible 
+             isVisible
                ? "opacity-100  translate-x-0 delay-700"
                : "opacity-0  -translate-x-[100%] delay-700 "
            }  `}
             onClick={() => hanldleClick(btn)}
           >
             <span
-              className={`absolute top-0 left-0 ${
-                 "bg-[#970303]" 
-              } rounded-full   w-full h-full  -translate-y-[calc(85%)] group-hover:-translate-y-0 transition-all duration-200 ease-linear`}
+              className={`absolute top-0 left-0 ${"bg-[#970303]"} rounded-full   w-full h-full  -translate-y-[calc(85%)] group-hover:-translate-y-0 group-active:-translate-y-0 lg:group-active:none transition-all duration-75 lg:duration-200 ease-linear`}
             ></span>
             <Icon
-              className={`relative w-full h-full ${
-                 "text-text"
-              }   group-hover:text-white group-hover:opacity-100  group-hover:animate-shake `}
+              className={`relative w-full h-full ${"text-text"}   group-active:text-white group-active:opacity-100  group-active:animate-shake group-hover:text-white group-hover:opacity-100  group-hover:animate-shake `}
               title={btn?.lable}
             />
           </button>

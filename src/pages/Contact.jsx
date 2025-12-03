@@ -61,7 +61,12 @@ function Contact() {
       <div className="w-full h-[40vh] lg:h-[60vh] relative ">
         {/* image part */}
 
-        <img src={bgimg} className="w-full h-full " />
+        <img
+          src={bgimg}
+          alt="contact"
+          loading="lazy"
+          className="w-full h-full "
+        />
         <div className="absolute top-1/3 md:top-1/2 left-0 w-full text-center text-white text-2xl md:text-4xl font-bold font-[Lato] flex flex-col justify-center items-center tracking-widest gap-2 ">
           <p>Hello.</p>
           <p>Let's work together</p>
@@ -121,7 +126,7 @@ function Contact() {
                 </span>
               ) : null}
               <input
-              value={contactData?.email}
+                value={contactData?.email}
                 onChange={(e) => handlecontactForm("email", e)}
                 required
                 type="Email"
@@ -131,7 +136,7 @@ function Contact() {
             <label className="tracking-widest text-text/70 font-bold ">
               Write a message:
               <input
-              value={contactData?.message}
+                value={contactData?.message}
                 onChange={(e) => handlecontactForm("message", e)}
                 required
                 type="textarea"
@@ -142,7 +147,7 @@ function Contact() {
               onClick={(e) => handlecontactFormSubmit(e)}
               className="group mt-2 md:mt-10 w-1/2 lg:w-1/6 text-white bg-black border border-border/15 hover:animate-buttonanimi rounded-xl px-4 py-1 md:px-[4%] md:py-[1%]   overflow-hidden  font-medium  relative z-10  md:text-xl    cursor-pointer "
             >
-              <span className="absolute top-0 left-0 bg-[#a1461c] opacity-70 w-full h-full rotate-45 -translate-x-[calc(70%)] group-hover:-translate-x-0 group-hover:rotate-0 transition-all duration-500 ease-linear group-active:bg-gray-800"></span>
+              <span className="absolute top-0 left-0 bg-[#a1461c] opacity-70 w-full h-full rotate-45 -translate-x-[calc(70%)] group-active:-translate-x-0 group-active:rotate-0  group-hover:-translate-x-0 group-hover:rotate-0 transition-all duration-500 ease-linear lg:group-active:bg-gray-800"></span>
               <span className="relative z-10">Submit</span>
             </button>
           </form>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,lazy } from "react";
 
 import useInView from "../Hooks/IsInView.jsx";
 import SocialMediaLinks from "../components/SocialMediaLinks.jsx";
+
 import profile from "../assets/sujith.png";
 import { useDispatch } from "react-redux";
 import {setIsNavclickcked} from "../Redux/slice.js"
@@ -133,7 +134,7 @@ function Home() {
                key={i}
                className="group grow-1 md:grow-0  shrink-0 text-border  hover:animate-buttonanimi rounded-xl px-4 py-1 md:px-[4%] md:py-[1%]   overflow-hidden  font-medium  relative z-10  md:text-xl cursor-pointer bg-btnbg"
              >
-               <span className="absolute top-0 left-0 bg-btnhoverbg opacity-70 w-full h-full rotate-45 -translate-x-[calc(70%)] group-hover:-translate-x-0 group-hover:rotate-0 transition-all duration-500 ease-linear group-active:bg-gray-800"></span>
+               <span className="absolute top-0 left-0 bg-btnhoverbg opacity-70 w-full h-full rotate-45 -translate-x-[calc(70%)] group-active:-translate-x-0 group-active:rotate-0 group-hover:-translate-x-0 group-hover:rotate-0 transition-all duration-500 ease-linear lg:group-active:bg-gray-800"></span>
                <span className="relative z-10">{btn}</span>
              </button>
            ))}
@@ -154,6 +155,7 @@ function Home() {
              src={profile}
              alt="sujith"
              draggable="false"
+             loading="lazy"
              className="relative z-20 object-[10px_-20px] h-full aspect-square object-cover rounded-full shadow-2xl  "
            />
            <div className="absolute w-[calc(100%+12px)] h-[calc(100%+12px)] -top-[6px] -left-[6px] -z-10 rounded-full bg-gradient-to-tr from-gradientfrom via-gradientto to-gradientvia blur-md animate-pulse group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>

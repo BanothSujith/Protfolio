@@ -333,7 +333,7 @@ function Projects2() {
                   </div>
                 ))}
               </div>
-              <div className="flex gap-16 w-full justify-center mt-6 md:mt-12 ">
+              <div className="flex gap-4 md:gap-16 w-full justify-center mt-6 md:mt-12 ">
                 {projectsData[activeIndex]?.projectLinks?.map((Links, idx) => {
                   const Type = Links?.label;
                   return (
@@ -348,7 +348,7 @@ function Projects2() {
                         }  `}
                       />
                       <span className="ml-2">{Links?.type}</span>
-                      <div className=" transform -translate-x-20 translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200 text-text group-active:-translate-y-10 group-active:translate-x-10 ">
+                      <div className="pl-2 lg:pl-0 transform lg:-translate-x-20 lg:translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-75 lg:duration-200 text-text group-active:-translate-y-10 group-active:translate-x-10 ">
                         <IoMdPaperPlane size={25}/>
                       </div>
                     </button>
@@ -377,7 +377,7 @@ top-0 flex lg:flex-col gap-[2px] items-center  "
             ))}
           </div>
           <div className="absolute hidden lg:block -top-0 lg:-right-[7px] w-full h-full  lg:w-1/2 ">
-            <img src={project} className="h-full w-full  " />
+            <img src={project} alt="projects" loading="lazy" className="h-full w-full  " />
           </div>
         </div>
       </div>

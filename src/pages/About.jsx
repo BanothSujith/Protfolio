@@ -183,6 +183,7 @@ const variants = {
               src={profile}
               alt="sujith"
               draggable="false"
+              loading='lazy'
               className="relative bg-surface w-full  z-20 object-[10px_-20px]  aspect-square object-cover rounded-full shadow-2xl  "
             />
             <div className="absolute w-[calc(100%+12px)] h-[calc(100%+12px)] -top-[6px] -left-[6px] -z-10 rounded-full bg-gradient-to-tr from-gradientfrom via-gradientto to-gradientvia blur-md animate-pulse group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>

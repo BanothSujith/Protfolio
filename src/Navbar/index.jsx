@@ -48,7 +48,7 @@ function index() {
             <button
               key={link.path}
               onClick={(e) => handleclick(e, link)}
-              className="relative z-11 px-3 py-1  font-normal text-text "
+              className="relative z-11 px-3 py-1  font-normal text-white "
             >
               {isActive && (
                 <motion.div
