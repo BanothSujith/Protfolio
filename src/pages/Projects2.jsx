@@ -296,6 +296,8 @@ function Projects2() {
         <div className="h-full w-full  lg:hidden block ">
           <img
             src={project}
+            alt="projects"
+            loading="lazy"
             className="h-[30vh] md:h-[60vh] w-full lg:hidden object-top  md:object-cover  "
           />
         </div>
