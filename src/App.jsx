@@ -11,6 +11,30 @@ import Projects2 from './pages/Projects2.jsx';
 import { useSelector } from 'react-redux';
 
 function App() {
+  const domainUrl = "https://banothsujith.vercel.app/";
+  const developerName = "Banoth Sujith";
+
+ 
+  const combinedSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "BANOTHSUJITH", 
+      url: domainUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: developerName,
+      jobTitle: "Full-Stack Developer & Frontend Engineer",
+      url: domainUrl,
+      
+      sameAs: [
+        "https://www.linkedin.com/in/banoth-sujith/",
+        "https://github.com/BanothSujith",
+      ],
+    },
+  ];
   const theme  = useSelector((state) => state.storeSlice.themeType);
   if(theme === 'dark'){
     document.getElementsByTagName('body')[0].className='dark';
@@ -18,32 +42,22 @@ function App() {
     document.getElementsByTagName('body')[0].className='bright';
   }
   document.documentElement.className=theme;
+
   return (
     <div className=" relative w-full h-full bg-fixed flex   flex-col md:gap-12  font-[Roboto]   bg-surface   select-none overflow-hidden ">
       <div>
-        {/* <Helmet>
-          <title>{`${
-            params?.pathname == "/"
-              ? "Banoth Sujith"
-              : `${params?.pathname
-                  .replace("/", "")
-                  .charAt(0)
-                  .toUpperCase()
-                  .concat(
-                    params?.pathname.replace("/", "").slice(1).toLowerCase()
-                  )} `
-          } `}</title>
-        </Helmet> */}
+        <Helmet>
+          <JsonLdSchema schemaData={combinedSchema} />
+          <title>{developerName} | Full-Stack Developer</title>
+        </Helmet>
         <Navbar />
         {/* <Routerr /> */}
         <Home />
         <About />
         {/* <Projects /> */}
-        <Projects2/>
+        <Projects2 />
         <Contact />
         <FooterCopyright />
-      
-      
       </div>
     </div>
   );
