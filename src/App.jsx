@@ -42,6 +42,8 @@ function App() {
         <Projects2/>
         <Contact />
         <FooterCopyright />
+      
+      
       </div>
     </div>
   );

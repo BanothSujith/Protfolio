@@ -2,6 +2,7 @@ import { useState } from 'react';
 import bgimg from '../assets/Contact.png'
 import SocialMediaLinks from '../components/SocialMediaLinks';
 import useInView from '../Hooks/IsInView';
+import axios from 'axios';
 
 function Contact() {
     const [ref, isVisible, pageView] = useInView(.2,'0px');
@@ -23,9 +24,19 @@ function Contact() {
        }));
      }
    };
-    const handlecontactFormSubmit = (e) =>{
+    const handlecontactFormSubmit = async (e) =>{
       e.preventDefault();
       console.log(contactData);
+      const res = await axios.post(
+        `${import.meta.env.VITE_SERVER}api/v1/notify`,
+        {
+          full_name: contactData.first_name + " " + contactData.last_name,
+          // last_name: contactData.last_name,
+          email: contactData.email,
+          message: contactData.message,
+        }
+      );
+      console.log(res);
       if(contactData.email.length !=0 || contactData.isEmail == true){
         alert("Form submitted successfully!"+contactData.email);
                 setContactData({

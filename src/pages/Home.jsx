@@ -110,7 +110,7 @@ function Home() {
                </span>
              </h1>
              <p
-               className={`lg:w-[90%] w-[80%] md:w-3/4 text-text  text-[clamp(1rem,1.5vw,3rem)] transition-all duration-500 ease-linear delay-200 ${
+               className={`lg:w-[90%] w-[90%] md:w-3/4 text-text  text-[clamp(1rem,1.5vw,3rem)] transition-all duration-500 ease-linear delay-200 ${
                  isVisible
                    ? "opacity-100 -translate-x-0 lg:translate-x-0 lg:translate-y-0"
                    : "opacity-0  -translate-x-[100%] lg:translate-x-0 lg:translate-y-[100%] "
