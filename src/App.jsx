@@ -10,6 +10,8 @@ import Home from './pages/Home.jsx';
 import Projects2 from './pages/Projects2.jsx';
 import { useSelector } from 'react-redux';
 import JsonLdSchema from './components/JsonLdSchema.jsx';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
   const domainUrl = "https://banothsujith.vercel.app/";
@@ -44,6 +46,13 @@ function App() {
   }
   document.documentElement.className=theme;
 
+
+  useEffect(()=>{
+    async () =>{
+          const res = await axios.get(import.meta.env.VITE_SERVER);
+          console.log(res);
+        }
+  },[])
   return (
     <div className=" relative w-full h-full bg-fixed flex   flex-col md:gap-12  font-[Roboto]   bg-surface   select-none overflow-hidden ">
       <div>
