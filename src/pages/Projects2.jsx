@@ -216,7 +216,7 @@ function Projects2() {
   const handleScroll = (e) => {
     if (scrollLock.current) {
       e.preventDefault();
-      refproject?.current?.scrollIntoView({ behavior: "smooth" });
+      refdes?.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
 
@@ -282,13 +282,13 @@ function Projects2() {
       >
         Projects
       </h1>
-      <div ref={refproject} className="flex justify-center flex-col lg:flex-row items-center  h-full lg:px-6 w-full ">
+      <div  className="flex justify-center flex-col lg:flex-row items-center  h-full lg:px-6 w-full ">
         <div className="h-full w-full  lg:hidden block ">
           <img
             src={project}
             alt="projects"
             loading="lazy"
-            className="h-[30vh] md:h-[60vh] w-full lg:hidden object-top  md:object-cover  "
+            className="h-[30vh] md:h-[30rem] w-full lg:hidden object-center  md:object-cover  "
           />
         </div>
 
@@ -307,7 +307,7 @@ function Projects2() {
               animate="animate"
               exit="exit"
               variants={variants}
-              className="h-[80vh]  lg:h-[45rem]  p-4 lg:p-12 flex justify-center  lg:justify-center items-center flex-col lg:w-1/2 gap-4  md:gap-8 lg:gap-4  "
+              className="h-[80vh]  md:h-[45rem]  p-4 lg:p-12 flex justify-center  lg:justify-center items-center flex-col lg:w-1/2 gap-4  md:gap-8 lg:gap-4  "
             >
               <h2 className=" text-2xl md:text-4xl font-bold md:mb-2 ">
                 {projectsData[activeIndex].title}
