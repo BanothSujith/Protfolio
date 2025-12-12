@@ -1,9 +1,7 @@
-
-
 import IsInView from "../Hooks/IsInView.jsx";
 import { FaGithub } from "react-icons/fa";
 import { IoArrowForwardCircle } from "react-icons/io5";
-import {IoMdPaperPlane} from "react-icons/io"
+import { IoMdPaperPlane } from "react-icons/io";
 import project from "../assets/Projects.png";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -152,128 +150,120 @@ const projectsData = [
       },
     ],
   },
-  
 ];
 function Projects2() {
+  const [ref, isVisible, pageView] = IsInView(0.2, " 0px 0px 0px 0px ");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState("down");
+  const refdes = useRef(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const refproject = useRef();
+  const minSwipeDistance = 10;
 
- const [ref, isVisible, pageView] = IsInView(0.2, " 0px 0px 0px 0px "); 
- const [activeIndex, setActiveIndex] = useState(0);
-    const [direction, setDirection] = useState("down");
-    const refdes = useRef(null);
-    const touchStartX = useRef(null);
-    const touchEndX = useRef(null);
-  
- const minSwipeDistance = 10; 
- 
- const onTouchStart = (e) => {
-   touchStartX.current = e.touches[0].clientX;
- };
- 
- const onTouchMove = (e) => {
-   touchEndX.current = e.touches[0].clientX;
- };
- 
- const onTouchEnd = () => {
-   if (!touchStartX.current || !touchEndX.current) return;
- 
-   const distance = touchStartX.current - touchEndX.current;
- 
-   if (Math.abs(distance) < minSwipeDistance) return;
- 
-   if (distance > 0 && activeIndex < projectsData.length - 1) {
-     setDirection("down");
-     setActiveIndex((prev) => prev + 1);
-   } else if (distance < 0 && activeIndex > 0) {
-     setDirection("up");
-     setActiveIndex((prev) => prev - 1);
-   }
- 
-   touchStartX.current = null;
-   touchEndX.current = null;
- };
- 
- const variants = {
-   initial: (direction) => ({
-     y: direction === "down" ? "5%" : "-5%",
-     opacity: 0,
-   }),
-   animate: {
-     y: 0,
-     opacity: 1,
-     
-     transition: {
-       duration: 0.4,
-       ease: "linear",
-     },
-   },
-   exit: (direction) => ({
-     y: direction === "down" ? "-5%" : "5%",
-     opacity: 0,
-     transition: {
-       duration: 0.4,
-       ease: "linear",
-     },
-   }),
- };
-    const scrollLock = useRef(false);
- 
-    const handleScroll = (e) => {
-      if (scrollLock.current) {
-       e.preventDefault()
-        return;
-     }
- 
-      if (e.deltaY > 0 && activeIndex < projectsData.length - 1) {
-        e.preventDefault();
-        setDirection("down");
-        setActiveIndex((prev) => prev + 1);
-        scrollLock.current = true;
-      } else if (e.deltaY < 0 && activeIndex > 0) {
-        e.preventDefault();
-        setDirection("up");
-        setActiveIndex((prev) => prev - 1);
-        scrollLock.current = true;
-      }
- 
-      
-      if (scrollLock.current) {
-       setTimeout(() => {
-          scrollLock.current = false;
-        }, 300); 
-        
-      }
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(distance) < minSwipeDistance) return;
+
+    if (distance > 0 && activeIndex < projectsData.length - 1) {
+      setDirection("down");
+      setActiveIndex((prev) => prev + 1);
+    } else if (distance < 0 && activeIndex > 0) {
+      setDirection("up");
+      setActiveIndex((prev) => prev - 1);
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const variants = {
+    initial: (direction) => ({
+      y: direction === "down" ? "5%" : "-5%",
+      opacity: 0,
+    }),
+    animate: {
+      y: 0,
+      opacity: 1,
+
+      transition: {
+        duration: 0.4,
+        ease: "linear",
+      },
+    },
+    exit: (direction) => ({
+      y: direction === "down" ? "-5%" : "5%",
+      opacity: 0,
+      transition: {
+        duration: 0.4,
+        ease: "linear",
+      },
+    }),
+  };
+  const scrollLock = useRef(false);
+
+  const handleScroll = (e) => {
+    if (scrollLock.current) {
+      e.preventDefault();
+      refproject?.current?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (e.deltaY > 0 && activeIndex < projectsData.length - 1) {
+      e.preventDefault();
+      setDirection("down");
+      setActiveIndex((prev) => prev + 1);
+      scrollLock.current = true;
+    } else if (e.deltaY < 0 && activeIndex > 0) {
+      e.preventDefault();
+      setDirection("up");
+      setActiveIndex((prev) => prev - 1);
+      scrollLock.current = true;
+    }
+
+    if (scrollLock.current) {
+      setTimeout(() => {
+        scrollLock.current = false;
+      }, 300);
+    }
+  };
+
+  useEffect(() => {
+    const container = refdes.current;
+    if (!container) return;
+
+    container.addEventListener("wheel", handleScroll);
+
+    return () => {
+      container.removeEventListener("wheel", handleScroll);
     };
- 
- 
- 
-    useEffect(() => {
-      const container = refdes.current;
-      if (!container) return;
- 
-      container.addEventListener("wheel", handleScroll);
- 
-      return () => {
-        container.removeEventListener("wheel", handleScroll);
-      };
-    }, [activeIndex]);
-     useEffect(() => {
-       if (isVisible) {
- 
-       }
-     }, [isVisible]);
-    function handledots(i){
-     if(activeIndex > i){
-       setDirection("up");
-       
-     }else{
-       setDirection("down");
-     }
-     setActiveIndex(i);
+  }, [activeIndex]);
+  useEffect(() => {
+    if (isVisible) {
     }
-    const halndleclick = (url) =>{
-      window.open(
-        url,  );
+  }, [isVisible]);
+  function handledots(i) {
+    if (activeIndex > i) {
+      setDirection("up");
+    } else {
+      setDirection("down");
     }
+    setActiveIndex(i);
+  }
+  const halndleclick = (url) => {
+    window.open(url);
+  };
   return (
     <div
       ref={(ele) => {
@@ -281,7 +271,7 @@ function Projects2() {
         pageView.current = ele;
       }}
       id="projects"
-      className="h-fit md:h-screen w-full text-text flex flex-col justify-center items-center gap-6  lg:pt-18 overflow-hidden "
+      className="h-fit md:h-full w-full text-text flex flex-col justify-center items-center gap-6  lg:pt-18 overflow-hidden "
     >
       <h1
         className={`text-3xl md:text-5xl font-bold transition-all duration-700 lg:duration- ease-linear hidden lg:block ${
@@ -292,7 +282,7 @@ function Projects2() {
       >
         Projects
       </h1>
-      <div className="flex justify-center flex-col lg:flex-row items-center  h-full lg:px-6 w-full ">
+      <div ref={refproject} className="flex justify-center flex-col lg:flex-row items-center  h-full lg:px-6 w-full ">
         <div className="h-full w-full  lg:hidden block ">
           <img
             src={project}
@@ -317,7 +307,7 @@ function Projects2() {
               animate="animate"
               exit="exit"
               variants={variants}
-              className="h-[80vh]  lg:[60vh]  p-4 lg:p-12 flex justify-center  lg:justify-center items-center flex-col lg:w-1/2 gap-4  md:gap-8 "
+              className="h-[80vh]  lg:h-[45rem]  p-4 lg:p-12 flex justify-center  lg:justify-center items-center flex-col lg:w-1/2 gap-4  md:gap-8 lg:gap-4  "
             >
               <h2 className=" text-2xl md:text-4xl font-bold md:mb-2 ">
                 {projectsData[activeIndex].title}
@@ -340,18 +330,16 @@ function Projects2() {
                   const Type = Links?.label;
                   return (
                     <button
-                    onClick={()=>halndleclick(Links?.url)}
+                      onClick={() => halndleclick(Links?.url)}
                       key={idx}
-                      className={`border border-amber-500/50 bg-amber-500/10  md:px-3 h-12 rounded-xl font-medium transition-all duration-300 ease-linear hover:text-text/80 hover:bg-surface/60 hover:border-amber-400/70 w-1/2 md:w-1/4 flex justify-center md:gap-4 items-center  group overflow-hidden`}
+                      className={`border border-amber-500/50 bg-amber-500/10  md:px-3 h-12 rounded-xl font-medium transition-all duration-300 ease-linear hover:text-text/80 hover:bg-surface/60 hover:border-amber-400/70 w-1/2 md:full flex justify-center md:gap-4 items-center  group overflow-hidden`}
                     >
                       <Type
-                        className={`${
-                          Links?.size ? "text-4xl" : "text-3xl"
-                        }  `}
+                        className={`${Links?.size ? "text-4xl" : "text-3xl"}  `}
                       />
                       <span className="ml-2">{Links?.type}</span>
                       <div className="pl-2 lg:pl-0 transform lg:-translate-x-20 lg:translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-75 lg:duration-200 text-text group-active:-translate-y-10 group-active:translate-x-10 ">
-                        <IoMdPaperPlane size={25}/>
+                        <IoMdPaperPlane size={25} />
                       </div>
                     </button>
                   );
@@ -373,13 +361,16 @@ top-0 flex lg:flex-col gap-[2px] items-center  "
                     ? "bg-gradient-to-r from-[#420101] to-[#970303] lg:w-1.5"
                     : "bg-text/30"
                 }`}
-              >
-             
-              </button>
+              ></button>
             ))}
           </div>
           <div className="absolute hidden lg:block -top-0 lg:-right-[7px] w-full h-full  lg:w-1/2 ">
-            <img src={project} alt="projects" loading="lazy" className="h-full w-full  " />
+            <img
+              src={project}
+              alt="projects"
+              loading="lazy"
+              className="h-full w-full  "
+            />
           </div>
         </div>
       </div>
@@ -387,4 +378,4 @@ top-0 flex lg:flex-col gap-[2px] items-center  "
   );
 }
 
-export default Projects2
+export default Projects2;

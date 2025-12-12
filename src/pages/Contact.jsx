@@ -40,7 +40,7 @@ function Contact() {
             message: "",
             isEmail: false,
           });
-       
+       console.log(dataToSend);
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER}api/v1/notify`,
         dataToSend
