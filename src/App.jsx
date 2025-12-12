@@ -47,12 +47,17 @@ function App() {
   document.documentElement.className=theme;
 
 
-  useEffect(()=>{
-    async () =>{
-          const res = await axios.get(import.meta.env.VITE_SERVER);
-          console.log(res);
-        }
-  },[])
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(import.meta.env.VITE_SERVER);
+        console.log(res);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
   return (
     <div className=" relative w-full h-full bg-fixed flex   flex-col md:gap-12  font-[Roboto]   bg-surface   select-none overflow-hidden ">
       <div>
