@@ -47,8 +47,8 @@ function SocialMediaLinks({isVisible = false, page="home"}) {
         return (
           <button
             key={i}
-            className={`group  shadow-[2px_-2px_5px] shadow-border bg-surface 
-           hover:animate-buttonanimi  px-2 py-2 overflow-hidden  font-medium relative z-10 w-[clamp(2.5rem,2vw,6rem)] h-[clamp(2.5rem,2vw,6vw)]  rounded-full cursor-pointer transition-all duration-100 ease-linear  ${
+            className={`socialtest group  shadow-[2px_-2px_5px] shadow-border bg-surface 
+           hover:animate-buttonanimi  px-2 py-2 overflow-hidden  font-medium relative w-[clamp(2.5rem,2vw,6rem)] h-[clamp(2.5rem,2vw,6vw)]  rounded-full cursor-pointer transition-all duration-100 ease-linear  ${
              isVisible
                ? "opacity-100  translate-x-0 delay-700"
                : "opacity-0  -translate-x-[100%] delay-700 "

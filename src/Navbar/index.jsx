@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import "../index.css";
 import { useDispatch,useSelector } from "react-redux";
 import { setCurrentPath, setIsNavclickcked } from "../Redux/slice";
+import SujithDev from "../components/SujithDev.jsx";
+import useInView from "../Hooks/IsInView.jsx";
 function index() {
+     const [ref, isVisible, pageView] = useInView();
+  
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
@@ -23,41 +27,44 @@ function index() {
        .scrollIntoView({ behavior: "smooth" });
   }
   return (
-    <div className="fixed top-0 w-full p-0.5   md:pb-2 md:px-2 flex h-10 md:h-20 justify-between items-center z-50 ">
-      <div className=" test  md:pt-2  h-full  flex flex-col hover:scale-105 transition-all duration-75 ease-linear hover:skew-2 ">
-        <p
-          className="flex justify-center items-center text-text/90 font-medium  tracking-widest text-xl rounded-full pl-4 lg:pl-12  "
-          style={{ fontFamily: "Momo Signature" }}
-        >
-          Sujith
-        </p>
-        <p className="  flex gap-2 transform translate-x-[170%] w-[40%] h-[3px]">
-          <span className=" bg-text/90  py-[1px] w-full h-full rounded-[100%_30%_50%_12%] "></span>
-          <span className="bg-text/90 h-  rounded-full ">.</span>
-        </p>
+    <div
+      ref={ref}
+      className="fixed top-0 w-full p-0.5   md:pb-2 md:px-2 grid grid-cols-3 h-10 md:h-20 content-center z-20  "
+    >
+      <div
+        className={`sujithdev  md:pt-2 grid grid-cols-1 content-center transition-all duration-75 ease-linear`}
+      >
+        <SujithDev />
       </div>
       {/* mobile navbar */}
       <nav
-        className=" md:hidden  fixed bottom-0 p-2 overflow-auto w-full scrollbar bg-[#0a1429] flex justify-evenly items-center
+        className=" md:hidden  fixed bottom-0 p-2 overflow-auto w-full scrollbar bg-[rgba(17,17,17,0.69)] backdrop-blur-3xl flex justify-evenly items-center shadow-[inset_0rem_1rem_10px_0px_rgba(255,255,255,.1)]
        "
       >
-        {navLinks.map((link) => {
+        {navLinks.map((link, i) => {
           const isActive = locationRedux == link.label.toLowerCase();
 
           return (
             <button
               key={link.path}
               onClick={(e) => handleclick(e, link)}
-              className="relative z-11 px-3 py-1  font-normal text-white "
+              className={`navlink2 relative z-1 px-3 py-1  text-xs tracking-widest  hover:scale-105 transition-all duration-75  ease-linear animate-navAnimate  `}
+              style={{ animationDuration: `${i * 0.6}s` }}
             >
               {isActive && (
                 <motion.div
                   layoutId="active"
-                  className="absolute inset-0 rounded-full bg-[#217faa] border border-[#5da1ce] shadow-[0px_0px_10px_2px_rgba(5,176,255,.8)] "
+                  className=" absolute inset-0 rounded-full bg-[rgb(40,35,48)]  shadow-[inset_0rem_.2rem_10px_0px_rgba(255,252,252)]  "
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 />
               )}
-              <span className={`relative`}>{link.label}</span>
+              <span
+                className={`relative  ${
+                  isActive ? "text-[#1eb9ce] " : "text-mnav  "
+                }`}
+              >
+                {link.label}
+              </span>
             </button>
           );
         })}
@@ -65,24 +72,22 @@ function index() {
       {/* lab and larger  screen navbar */}
 
       <nav
-        className="hidden  relative z-0 px-10 pr-6 py-4 
-       animate  md:flex gap-x-2  h-full items-center justify-center 
-       "
+        className={`hidden  relative z-0 px-10 pr-6 py-4   gap-x-2 md:flex h-full items-center justify-start transition-all duration-75 ease-linear `}
       >
-        {navLinks.map((link) => {
+        {navLinks.map((link, i) => {
           const isActive = locationRedux == link.label.toLowerCase();
 
           return (
             <button
               key={link.path}
-             
               onClick={(e) => handleclick(e, link)}
-              className="relative z-11 px-4 py-2  font-bold tracking-widest uppercase  hover:scale-105 transition-all duration-1000  ease-linear  "
+              className={` navlink relative z-1 px-3 py-1  text-xs tracking-widest  hover:scale-105 transition-all duration-75  ease-linear animate-navAnimate  `}
+              style={{ animationDuration: `${i * 0.6}s` }}
             >
               {isActive && (
                 <motion.div
                   layoutId="active"
-                  className="absolute inset-0 rounded-full bg-[#217faa] border border-[#5da1ce] shadow-[0px_0px_10px_2px_rgba(5,176,255,.8)]  "
+                  className=" absolute inset-0 rounded-full bg-[rgb(40,35,48)]  shadow-[inset_0rem_.2rem_10px_0px_rgba(255,252,252)]  "
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 />
               )}
@@ -97,9 +102,6 @@ function index() {
           );
         })}
       </nav>
-      <div>
-       
-      </div>
     </div>
   );
 }
