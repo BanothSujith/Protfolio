@@ -1,0 +1,106 @@
+
+/* Reset */
+* {
+  box-sizing: border-box;
+    transition: 
+    background-color 0.4s ease,
+    color 0.4s ease-out,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+@import "tailwindcss";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/space-grotesk/400.css";
+/* Light Theme */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --bg-bsGradient:linear-gradient(45deg, #ff7e5f, #feb47b);
+--fromBs:#a200ff;
+--toBs:#0787c2;
+--fromName: #9b079b;
+--toName:#1234f0;
+--shadow-color: rgba(204, 204, 204, 0.466);
+--shadow-color2: rgba(224, 221, 221, 0.884);
+
+--border-color: rgba(143, 142, 142, 0.267);
+--bg-card-gradient:#82d4e9;
+--bg-sec : #f5faf8e1;
+}
+
+/* Dark Theme */
+.dark {
+  --background-color: #000;
+  --text-color: #fff;
+  --fromBs:#c072eb;
+--toBs:#4cb4e9;
+--bg-card-gradient:#2e484e;
+  --fromName: #4dbee0;
+  --bg-sec : #535455da;
+--toName:#7b31f3;
+   --bg-grid: radial-gradient(circle, #b3afaf73 1.5px, transparent 1px);
+--shadow-color: rgba(143, 143, 143, 0.2);
+--shadow-color2: rgba(68, 67, 67, 0.788);
+
+  --grid-overlay: radial-gradient(circle, transparent 60%, black);
+
+/* --border-color: rgba(184, 184, 184, 0.2); */
+}
+
+/* Tailwind Theme Mapping */
+@theme {
+  --color-bg-primary: var(--background-color);
+  --color-text-primary: var(--text-color);
+  --font-heading: "space-grotesk", sans-serif;
+  --font-body: "inter", sans-serif;
+  --color-gradientBS: linear-gradient(90deg, #4b4b4b, #feb47b);
+  --color-frombs: var(--fromBs);
+--color-tobs: var(--toBs);
+--color-fromName:var(--fromName);
+--color-toName: var(--toName);
+--color-shadow:var(--shadow-color);
+--color-shadow2:var(--shadow-color2);
+--color-border:rgba(143, 142, 142, 0.267);
+--animate-fadeIn: fadeIn 5s ease-in-out;
+--color-cardBg:var(--bg-card-gradient);
+--color-bg-sec:var(--bg-sec);
+}
+
+@keyframes fadeIn {
+  from{
+    rotate:'0deg';
+  }
+  to{
+    rotate:'360deg'
+  }
+}
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.grid-bg {
+  background-image: var(--bg-grid);
+  background-size: 20px 20px; 
+position: relative;
+z-index: 10;
+}
+.grid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grid-overlay);
+  pointer-events: none;
+  z-index: -100;
+  opacity: 0;
+}
+
+.dark .grid-bg::after {
+  animation: gridFadeIn 0.3s ease-out 0.5s forwards;
+}
+.animate-rotates{
+  animation: fadeIn 4s ease-in both;
+}
