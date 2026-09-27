@@ -10,9 +10,14 @@ import ContactSection from "./pages/ContactSection";
 import FooterCopyright from "./components/FooterCopyright";
 import FloatingNav from "./components/FloatingNav";
 import useScrollDirection from "./Hooks/useScrollDirection";
+import Helmet from "helmet";
+import JsonLdSchema from "./JsonLdSchema";
+import axios from "axios";
 
 function App() {
   const domainUrl = "https://banothsujith.vercel.app/";
+  const developerName = "Banoth Sujith";
+
 
   const combinedSchema = [
     {
