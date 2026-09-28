@@ -13,6 +13,7 @@ import useScrollDirection from "./Hooks/useScrollDirection";
 import Helmet from "helmet";
 import JsonLdSchema from "./JsonLdSchema";
 import axios from "axios";
+import CursorAvatar from "./components/CursorAvatar";
 
 function App() {
   const domainUrl = "https://banothsujith.vercel.app/";
@@ -139,6 +140,7 @@ function App() {
       <SkillsSection />
       <ContactSection theme={theme} />
       <FooterCopyright />
+      <CursorAvatar/>
     </main>
   );
 }
