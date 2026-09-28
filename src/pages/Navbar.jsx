@@ -48,7 +48,7 @@ function Navbar({ theme, heightRef }) {
     return (
         <nav ref={heightRef} className="fixed top-4 flex w-full md:w-fit md:gap-16 justify-between rounded-full bg-white/5 backdrop-blur-[2px] px-8 py-4 border-2 border-border z-50 ">
            
-            <button name="Banoth Sujith" className="group flex items-center gap-2  ">
+            <button name="Banoth Sujith"  className="group flex items-center gap-2  ">
                 <div className="relative rounded-lg p-[2px] shadow-xs shadow-shadow bg-linear-45 from-frombs via-transparent to-tobs hover:scale-105 transition-all duration-100 ease-out">
                     <div className=" bg-bg-primary rounded-lg px-1 py-1 font-bold text-lg font-body">
                         <span
@@ -67,7 +67,7 @@ function Navbar({ theme, heightRef }) {
             </button>
             <section className=" hidden lg:flex gap-3 justify-center items-center">
                 {navLinks.map((link) => (
-                    <button onClick={() => {
+                    <button name={link.name} onClick={() => {
                         const element = document.querySelector(link.id);
                         if (element) {
                             const offset = 80; // navbar height
@@ -89,6 +89,7 @@ function Navbar({ theme, heightRef }) {
                 ))}
             </section>
             <motion.button
+            name="theme button"
                 onClick={(e) => toggleTheme(e)}
                 whileHover={{ scale: 1.01, y: -1 }}
                 whileTap={{ scale: 0.92 }}
