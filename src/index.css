@@ -104,3 +104,30 @@ z-index: 10;
 .animate-rotates{
   animation: fadeIn 4s ease-in both;
 }
+
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5cced6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+
+}

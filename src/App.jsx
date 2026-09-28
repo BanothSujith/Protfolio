@@ -63,7 +63,7 @@ function App() {
   }, []);
   return (
     <main
-      className="relative w-full overflow-x-hidden flex flex-col items-center bg-bg-primary text-text-primary"
+      className="relative w-full pb-12 overflow-x-hidden flex flex-col items-center bg-bg-primary text-text-primary"
       style={{
         paddingTop:
           width < 768

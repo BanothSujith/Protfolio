@@ -72,7 +72,7 @@ export default function FloatingNav() {
             className=" bg-bg-sec p-1 rounded-full border border-border max-w-[95%] overflow-visible"
         >
             <div
-                className="flex items-center gap-3 md:gap-4 px-2 py-0.5 md:py-0 md:px-6 rounded-full bg-bg-primary shadow-[0_10px_30px_rgba(0,0,0,0.15)] border border-border overflow-x-auto md:overflow-visible overflow-y-visible"
+                className="flex items-center gap-3 md:gap-4 px-2 py-0.5 md:py-0 md:px-6 rounded-full bg-bg-primary shadow-[0_10px_30px_rgba(0,0,0,0.15)] border border-border overflow-x-auto scrollbar md:overflow-visible overflow-y-visible"
             >
                 {navLinks.map((link, i) => {
                     const transform = getTransform(i);
